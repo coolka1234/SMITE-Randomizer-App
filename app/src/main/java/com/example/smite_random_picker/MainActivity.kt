@@ -10,7 +10,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,15 +20,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.smite_random_picker.ui.theme.SMITERandomPickerTheme
 import kotlin.random.Random
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -44,7 +38,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent() {
+        setContent {
             SMITERandomPickerTheme {
                 RandomPictureScreen()
             }
@@ -74,7 +68,7 @@ fun RandomPictureScreen() {
     val randomPicture = painterResource(id = R.drawable.achilles)
     val randomString = remember { mutableStateOf("Random String") }
 
-    Surface() {
+    Surface {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -101,7 +95,7 @@ fun RandomPictureScreen() {
 
             // Button to fetch and display a new random picture and string
             Button(
-                onClick = { /* TODO: Fetch and display new random picture and string */ },
+                onClick = {  },
                 modifier = Modifier.padding(vertical = 8.dp)
             ) {
                 Text(text = "Show Random")
