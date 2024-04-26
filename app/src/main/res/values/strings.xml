@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SMITE-Random-Picker</string>
+    <string name="agni">Agni</string>
+    <string name="achilles">Achilles</string>
+    <string name="ah_puch">Ah Puch</string>
+
 </resources>
