@@ -5,4 +5,10 @@ class CharacterList {
     fun addCharacter(character: Character) {
         characters.add(character);
     }
+    fun getCharacter(index: Int): Character {
+        return characters[index];
+    }
+    fun getCharacterCount(): Int {
+        return characters.size;
+    }
 }

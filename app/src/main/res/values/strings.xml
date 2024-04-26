@@ -1,4 +1,5 @@
 <resources>
+    <integer name="num_of_heroes">130</integer>
     <string name="app_name">SMITE-Random-Picker</string>
     <string name="agni">Agni</string>
     <string name="achilles">Achilles</string>
