@@ -247,19 +247,19 @@ fun RandomPictureScreen() {
                 modifier = Modifier.fillMaxWidth(),
                 maxItemsInEachRow = 3, // space between items horizontally
             ) {
-                CheckboxWithIconAndTextItem("Assassin", R.drawable.achilles, assassinChecked) {
+                CheckboxWithIconAndTextItem("Assassin", R.drawable.assasin, assassinChecked) {
                     assassinChecked = it
                 }
-                CheckboxWithIconAndTextItem("Guardian", R.drawable.achilles, guardianChecked) {
+                CheckboxWithIconAndTextItem("Guardian", R.drawable.guardian, guardianChecked) {
                     guardianChecked = it
                 }
-                CheckboxWithIconAndTextItem("Hunter", R.drawable.achilles, hunterChecked) {
+                CheckboxWithIconAndTextItem("Hunter", R.drawable.hunter, hunterChecked) {
                     hunterChecked = it
                 }
-                CheckboxWithIconAndTextItem("Mage", R.drawable.achilles, mageChecked) {
+                CheckboxWithIconAndTextItem("Mage", R.drawable.mage, mageChecked) {
                     mageChecked = it
                 }
-                CheckboxWithIconAndTextItem("Warrior", R.drawable.achilles, warriorChecked) {
+                CheckboxWithIconAndTextItem("Warrior", R.drawable.warrior, warriorChecked) {
                     warriorChecked = it
                 }
             }
