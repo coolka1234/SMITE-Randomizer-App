@@ -66,6 +66,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         modifier = modifier
     )
 }
+@Preview(showBackground = true)
 @Composable
 fun RandomPictureScreen() {
     // Placeholder state for the random picture and string
@@ -235,7 +236,6 @@ fun RandomPictureScreen() {
     }
 }
 
-@Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     SMITERandomPickerTheme {
