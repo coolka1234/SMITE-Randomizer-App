@@ -32,12 +32,6 @@ import androidx.compose.ui.unit.sp
 import com.example.smite_random_picker.ui.theme.SmiteGods
 
 class MainActivity : ComponentActivity() {
-    private lateinit var imageView: ImageView
-    private lateinit var textView: TextView
-    private lateinit var showButton: Button
-
-    private val pictures = arrayOf(R.drawable.achilles, R.drawable.agni, R.drawable.ah_puch)
-    private val strings = arrayOf(R.string.achilles, R.string.agni, R.string.ah_puch)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,14 +42,6 @@ class MainActivity : ComponentActivity() {
             }
         }
         //showButton.setOnClickListener { showRandomPictureAndString() }
-    }
-    private fun showRandomPictureAndString() {
-        val randomIndex = Random.nextInt(pictures.size)
-        val randomPicture = pictures[randomIndex]
-        val randomStringRes = strings[randomIndex]
-
-        imageView.setImageResource(randomPicture)
-        textView.setText(randomStringRes)
     }
 }
 
@@ -227,7 +213,7 @@ fun RandomPictureScreen() {
             )
 
             Button(
-                onClick = {result=(1..130).random() },
+                onClick = {result=(0..128).random() },
                 modifier = Modifier.padding(vertical = 8.dp)
             ) {
                 Text(text = "Randomize!")
