@@ -11,4 +11,8 @@ class CharacterList {
     fun getCharacterCount(): Int {
         return characters.size;
     }
+
+    operator fun iterator(): Iterator<Character> {
+        return characters.iterator();
+    }
 }

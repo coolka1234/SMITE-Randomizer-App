@@ -1,6 +1,10 @@
 package com.example.smite_random_picker
 
-class Character(private val name: String, val id: Int ) {
+enum class characterClass{
+    ASSASSIN, GUARDIAN, HUNTER, MAGE, WARRIOR
+}
+
+class Character(private val name: String, val id: Int, val characterClass: characterClass ) {
     override fun toString(): String {
         return name
     }
