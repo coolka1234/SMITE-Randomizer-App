@@ -11,6 +11,9 @@ class CharacterList {
     fun getCharacterCount(): Int {
         return characters.size;
     }
+    fun joinCharacterLists(list: CharacterList) {
+        characters.addAll(list.characters);
+    }
 
     operator fun iterator(): Iterator<Character> {
         return characters.iterator();

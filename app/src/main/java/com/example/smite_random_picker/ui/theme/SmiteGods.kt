@@ -189,4 +189,5 @@ object SmiteGods {
         }
         return assassins
     }
+
 }

@@ -1,9 +1,6 @@
 package com.example.smite_random_picker
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -19,20 +16,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.smite_random_picker.ui.theme.SMITERandomPickerTheme
-import kotlin.random.Random
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.smite_random_picker.ui.theme.SmiteGods
+import java.nio.charset.Charset
 
 class MainActivity : ComponentActivity() {
 
@@ -53,8 +50,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun RandomPictureScreen() {
     // Placeholder state for the random picture and string
-    val randomPicture = painterResource(id = R.drawable.achilles)
-    val randomString = remember { mutableStateOf("Random String") }
+    val character: Character
     var result by remember { mutableIntStateOf(1) }
     val imageResource = when (result) {
         1 -> R.drawable.achilles
@@ -184,7 +180,37 @@ fun RandomPictureScreen() {
         130 -> R.drawable.yuhuang
         else -> R.drawable.achilles
     }
-    val character = SmiteGods.gods.getCharacter(result)
+    var assassinChecked by remember { mutableStateOf(false) }
+    var guardianChecked by remember { mutableStateOf(false) }
+    var hunterChecked by remember { mutableStateOf(false) }
+    var mageChecked by remember { mutableStateOf(false) }
+    var warriorChecked by remember { mutableStateOf(false) }
+    val listOfPossible=CharacterList();
+    if (!assassinChecked && !guardianChecked && !hunterChecked && !mageChecked && !warriorChecked) {
+       listOfPossible.joinCharacterLists(SmiteGods.gods)
+    }
+    if (assassinChecked) {
+        listOfPossible.joinCharacterLists(SmiteGods.getAssassins())
+    }
+    if (guardianChecked) {
+        listOfPossible.joinCharacterLists(SmiteGods.getGuardians())
+    }
+    if (hunterChecked) {
+        listOfPossible.joinCharacterLists(SmiteGods.getHunters())
+    }
+    if (mageChecked) {
+        listOfPossible.joinCharacterLists(SmiteGods.getMages())
+    }
+    if (warriorChecked) {
+        listOfPossible.joinCharacterLists(SmiteGods.getWarriors())
+    }
+    character = if(listOfPossible.getCharacterCount()==0){
+        SmiteGods.gods.getCharacter(0)
+    }
+    else {
+        listOfPossible.getCharacter((result%listOfPossible.getCharacterCount()))
+    }
+
 
     Surface {
         Column(
@@ -221,22 +247,34 @@ fun RandomPictureScreen() {
                 modifier = Modifier.fillMaxWidth(),
                 maxItemsInEachRow = 3, // space between items horizontally
             ) {
-                CheckboxWithIconAndTextItem("Assasin", R.drawable.achilles)
-                CheckboxWithIconAndTextItem("Guardian", R.drawable.achilles)
-                CheckboxWithIconAndTextItem("Hunter", R.drawable.achilles)
-                CheckboxWithIconAndTextItem("Mage", R.drawable.achilles)
-                CheckboxWithIconAndTextItem("Warrior", R.drawable.achilles)
+                CheckboxWithIconAndTextItem("Assassin", R.drawable.achilles, assassinChecked) {
+                    assassinChecked = it
+                }
+                CheckboxWithIconAndTextItem("Guardian", R.drawable.achilles, guardianChecked) {
+                    guardianChecked = it
+                }
+                CheckboxWithIconAndTextItem("Hunter", R.drawable.achilles, hunterChecked) {
+                    hunterChecked = it
+                }
+                CheckboxWithIconAndTextItem("Mage", R.drawable.achilles, mageChecked) {
+                    mageChecked = it
+                }
+                CheckboxWithIconAndTextItem("Warrior", R.drawable.achilles, warriorChecked) {
+                    warriorChecked = it
+                }
             }
         }
     }
 }
 @Composable
-fun CheckboxWithIconAndTextItem(text: String, icon: Int) {
-    var checkedState by remember { mutableStateOf(false) }
+fun CheckboxWithIconAndTextItem(text: String, icon: Int, checkedState: Boolean, onCheckedChange: (Boolean) -> Unit) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Checkbox(
             checked = checkedState,
-            onCheckedChange = { checkedState = it }
+            onCheckedChange = onCheckedChange,
+            colors= CheckboxDefaults.colors(
+                checkmarkColor = Color.Black
+            )
         )
         Image(
             painter = painterResource(id = icon),
