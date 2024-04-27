@@ -22,11 +22,14 @@ import com.example.smite_random_picker.ui.theme.SMITERandomPickerTheme
 import kotlin.random.Random
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
+import androidx.compose.material3.Checkbox
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.smite_random_picker.ui.theme.SmiteGods
@@ -45,6 +48,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Preview(showBackground = true)
 @Composable
 fun RandomPictureScreen() {
@@ -194,8 +198,8 @@ fun RandomPictureScreen() {
                 painter = painterResource(id =character.id),
                 contentDescription = "Random Picture",
                 modifier = Modifier
-                    .size(200.dp)
-                    .padding(8.dp),
+                    .size(120.dp)
+                    .padding(6.dp),
                 contentScale = ContentScale.Fit
             )
 
@@ -211,8 +215,35 @@ fun RandomPictureScreen() {
             ) {
                 Text(text = "Randomize!")
             }
+            FlowRow(
+                verticalArrangement = Arrangement.Center,
+                horizontalArrangement = Arrangement.Center,
+                modifier = Modifier.fillMaxWidth(),
+                maxItemsInEachRow = 3, // space between items horizontally
+            ) {
+                CheckboxWithIconAndTextItem("Assasin", R.drawable.achilles)
+                CheckboxWithIconAndTextItem("Guardian", R.drawable.achilles)
+                CheckboxWithIconAndTextItem("Hunter", R.drawable.achilles)
+                CheckboxWithIconAndTextItem("Mage", R.drawable.achilles)
+                CheckboxWithIconAndTextItem("Warrior", R.drawable.achilles)
+            }
         }
     }
 }
-
+@Composable
+fun CheckboxWithIconAndTextItem(text: String, icon: Int) {
+    var checkedState by remember { mutableStateOf(false) }
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Checkbox(
+            checked = checkedState,
+            onCheckedChange = { checkedState = it }
+        )
+        Image(
+            painter = painterResource(id = icon),
+            contentDescription = null,
+            modifier = Modifier.size(24.dp)
+        )
+        Text(text = text, modifier = Modifier.padding(start = 4.dp))
+    }
+}
 

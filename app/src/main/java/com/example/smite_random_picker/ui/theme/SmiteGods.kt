@@ -7,6 +7,12 @@ import com.example.smite_random_picker.characterClass
 
 object SmiteGods {
     val gods = CharacterList()
+    const val numOfMages= 38
+    const val numOfHunters= 24
+    const val numOfWarriors= 20
+    const val numOfGuardians= 24
+    const val numOfAssassins= 24
+
     init {
         gods.addCharacter(Character("Achilles", R.drawable.achilles, characterClass.WARRIOR))
         gods.addCharacter(Character("Agni", R.drawable.agni, characterClass.MAGE))
