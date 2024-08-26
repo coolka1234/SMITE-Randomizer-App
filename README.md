@@ -7,7 +7,8 @@ Features:
 - ability to choose from any numbers of classes and their combinations
 - adaptive icon ensures proper look regardless of device screen size
 - uses both objective programing and functional
-- open source
+- open source\
+Screenshots:\
 ![1](https://github.com/coolka1234/SMITE-Randomizer-App/assets/88340455/56c673c6-14b3-4ee4-9a06-77cebd0a39c7)
 ![2](https://github.com/coolka1234/SMITE-Randomizer-App/assets/88340455/896995b3-78c0-4d43-88d9-35d56c15d48c)
 ![3](https://github.com/coolka1234/SMITE-Randomizer-App/assets/88340455/4c5c9ce6-a8aa-40fa-bca9-854848d69536)
